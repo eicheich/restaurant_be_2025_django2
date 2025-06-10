@@ -91,4 +91,43 @@ python manage.py seed_db
 - `/api/upload/` - Image upload
 - `/admin/` - Django admin interface
 
+## Troubleshooting "This site can't be reached"
+
+### Quick Checks:
+1. **Python App Status**: cPanel → Python App → Make sure status is "Running" (green)
+2. **Restart App**: Click "Restart" button in Python App
+3. **Test Basic URL**: Try `yourdomain.com/api/` first (not full endpoint)
+4. **Check Application URL**: Should match what you set (e.g., `api`)
+5. **Application Root**: Should point to your Django project folder
+
+### Common Fixes:
+
+**Fix 1: Update ALLOWED_HOSTS**
+Edit `restaurant_be_2025_django/settings_production.py`:
+```python
+ALLOWED_HOSTS = ['yourdomain.com', 'www.yourdomain.com', '*.yourdomain.com']
+```
+
+**Fix 2: Check Application Root Path**
+Should be: `/home/yourusername/public_html/api/`
+NOT: `/home/yourusername/public_html/api/restaurant_be_2025_django/`
+
+**Fix 3: Test passenger_wsgi.py**
+In Python App terminal:
+```bash
+cd /path/to/your/app
+python passenger_wsgi.py
+```
+If error, fix the WSGI file first.
+
+**Fix 4: Check Error Logs**
+- cPanel → Python App → Click your app name
+- Look for "View Log" or "Error Log"
+- Fix any Python errors shown
+
+### URL Testing Order:
+1. `yourdomain.com/` (basic domain)
+2. `yourdomain.com/api/` (app base URL)
+3. `yourdomain.com/api/menu-categories/` (API endpoint)
+
 That's it! Simple and straightforward.

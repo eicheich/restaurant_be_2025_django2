@@ -35,4 +35,24 @@
 ### Default Image URL:
 When images are null, API returns: `https://safetypreneur.co.id/halaman/kontak-tengah`
 
+### Troubleshooting "This site can't be reached":
+
+**Quick Fixes:**
+1. **cPanel → Python App → Restart** the application
+2. **Check Application URL** in Python App settings
+3. **Test basic URL first**: `yourdomain.com/api/` (not direct endpoint)
+4. **Check ALLOWED_HOSTS** in `settings_production.py`:
+   ```python
+   ALLOWED_HOSTS = ['yourdomain.com', 'www.yourdomain.com']
+   ```
+5. **View Logs** in cPanel Python App for error details
+
+**Common Issues:**
+- Application Root path incorrect
+- passenger_wsgi.py error
+- Domain not allowed in ALLOWED_HOSTS
+- Python App status not "Running"
+
+See `TROUBLESHOOT_URL.md` for detailed debugging steps.
+
 **Keep it simple - no more complex scripts! Just follow the basic deployment guide.**
