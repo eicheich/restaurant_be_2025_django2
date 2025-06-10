@@ -27,11 +27,14 @@ DATABASES = {
 
 # Static files configuration
 STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'public_html/static')
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')  # Untuk collectstatic
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'static'),  # Direktori static development
+]
 
 # Media files configuration
 MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'public_html/media')
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 # Security settings
 SECURE_BROWSER_XSS_FILTER = True
