@@ -162,10 +162,70 @@ The API will be available at http://127.0.0.1:8000/api/
 
 ### cPanel Deployment
 
-1. Upload the project to your cPanel account
-2. Set up a Python application in cPanel
-3. Configure the `passenger_wsgi.py` file with the correct Python interpreter path
-4. Set up a MySQL database and update the settings
+Setelah git clone di cPanel, ikuti langkah berikut:
+
+#### 1. Setup Python App di cPanel
+1. Login ke cPanel
+2. Cari "Python App" atau "Setup Python App"
+3. Klik "Create Application"
+4. Pilih Python version 3.8+
+5. Set Application Root ke folder project
+6. Set Application URL (contoh: `/restaurant-api`)
+
+#### 2. Konfigurasi Database
+1. Buat database MySQL di cPanel
+2. Catat nama database, username, dan password
+3. Copy `.env.example` menjadi `.env`
+4. Update file `.env` dengan kredensial database Anda
+
+#### 3. Update Settings Production
+Edit file `restaurant_be_2025_django/settings_production.py`:
+```python
+# Update dengan informasi Anda
+ALLOWED_HOSTS = ['yourdomain.com', 'www.yourdomain.com']
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'cpanelusername_restaurant_db',     # Ganti dengan nama DB Anda
+        'USER': 'cpanelusername_restaurant_user',   # Ganti dengan user DB Anda
+        'PASSWORD': 'your_database_password',       # Ganti dengan password DB Anda
+        'HOST': 'localhost',
+        'PORT': '3306',
+    }
+}
+```
+
+#### 4. Install Dependencies dan Setup
+Jalankan di terminal cPanel:
+```bash
+# Masuk ke folder project
+cd public_html/restaurant_be_2025_django
+
+# Install dependencies
+pip install -r requirements.txt
+
+# Run migrations
+python manage.py migrate --settings=restaurant_be_2025_django.settings_production
+
+# Collect static files
+python manage.py collectstatic --noinput --settings=restaurant_be_2025_django.settings_production
+
+# Create superuser
+python manage.py createsuperuser --settings=restaurant_be_2025_django.settings_production
+
+# Seed database
+python manage.py seed_db --settings=restaurant_be_2025_django.settings_production
+```
+
+#### 5. Update passenger_wsgi.py
+Pastikan file `passenger_wsgi.py` menggunakan path Python environment yang benar di cPanel Anda.
+
+#### 6. Restart Python App
+Di cPanel Python App interface, klik "Restart" untuk menerapkan perubahan.
+
+#### 7. Test API
+API akan tersedia di: `https://yourdomain.com/restaurant-api/api/`
 
 ### Heroku Deployment
 
