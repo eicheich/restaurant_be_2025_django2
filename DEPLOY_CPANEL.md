@@ -40,7 +40,40 @@ DATABASES = {
 
 ### 5. Run Setup Commands
 In Python App terminal:
+
+**Method 1: Test database first**
 ```bash
+# Test if database connection works
+python test_db_connection.py
+```
+
+**Method 2: If database connection is OK, but still "No migrations to apply":**
+```bash
+# Check what migrations Django sees
+python manage.py showmigrations --settings=restaurant_be_2025_django.settings_production
+
+# If no migrations shown, Django is using wrong settings
+# Force create migrations with production settings
+python manage.py makemigrations api --settings=restaurant_be_2025_django.settings_production
+
+# Then migrate
+python manage.py migrate --settings=restaurant_be_2025_django.settings_production
+```
+
+**Method 3: Use the automated script:**
+```bash
+# Make script executable and run
+chmod +x cpanel_setup.sh
+./cpanel_setup.sh
+```
+
+**Method 4: Manual step by step:**
+```bash
+# Set environment variable first
+export DJANGO_SETTINGS_MODULE=restaurant_be_2025_django.settings_production
+
+# Then run commands
+python manage.py makemigrations api
 python manage.py migrate
 python manage.py collectstatic --noinput
 python manage.py createsuperuser
