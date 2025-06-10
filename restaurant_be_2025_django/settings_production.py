@@ -1,53 +1,28 @@
 """
-Production settings for cPanel deployment
+Simple Production settings for cPanel
 """
 from .settings import *
-import os
 
-# Override settings for production
+# Production settings
 DEBUG = False
+ALLOWED_HOSTS = ['*']  # Change to your domain name later
 
-# Update allowed hosts dengan domain cPanel Anda
-ALLOWED_HOSTS = ['yourdomain.com', 'www.yourdomain.com', '*.yourdomain.com']
-
-# Database configuration untuk cPanel MySQL
+# Database - UPDATE THESE VALUES IN CPANEL
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'cpanelusername_restaurant_db',  # Ganti dengan nama database Anda
-        'USER': 'cpanelusername_restaurant_user',  # Ganti dengan user database Anda
-        'PASSWORD': 'your_database_password',  # Ganti dengan password database Anda
+        'NAME': 'your_database_name',
+        'USER': 'your_database_user',
+        'PASSWORD': 'your_database_password',
         'HOST': 'localhost',
         'PORT': '3306',
-        'OPTIONS': {
-            'init_command': "SET sql_mode='STRICT_TRANS_TABLES'",
-        },
     }
 }
 
-# Static files configuration
+# Static files
 STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATIC_ROOT = BASE_DIR / 'staticfiles'
 
-# Conditional STATICFILES_DIRS - hanya jika direktori static ada
-STATIC_DIR = os.path.join(BASE_DIR, 'static')
-if os.path.exists(STATIC_DIR):
-    STATICFILES_DIRS = [STATIC_DIR]
-else:
-    STATICFILES_DIRS = []
-
-# Media files configuration
+# Media files
 MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
-
-# Security settings
-SECURE_BROWSER_XSS_FILTER = True
-SECURE_CONTENT_TYPE_NOSNIFF = True
-X_FRAME_OPTIONS = 'DENY'
-
-# CORS settings untuk production
-CORS_ALLOW_ALL_ORIGINS = False
-CORS_ALLOWED_ORIGINS = [
-    "https://yourdomain.com",
-    "https://www.yourdomain.com",
-]
+MEDIA_ROOT = BASE_DIR / 'media'
