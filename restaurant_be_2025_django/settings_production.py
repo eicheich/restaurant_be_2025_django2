@@ -27,10 +27,14 @@ DATABASES = {
 
 # Static files configuration
 STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')  # Untuk collectstatic
-STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'static'),  # Direktori static development
-]
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
+# Conditional STATICFILES_DIRS - hanya jika direktori static ada
+STATIC_DIR = os.path.join(BASE_DIR, 'static')
+if os.path.exists(STATIC_DIR):
+    STATICFILES_DIRS = [STATIC_DIR]
+else:
+    STATICFILES_DIRS = []
 
 # Media files configuration
 MEDIA_URL = '/media/'
