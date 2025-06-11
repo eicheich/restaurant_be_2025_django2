@@ -43,20 +43,19 @@ class Command(BaseCommand):
 
         # Create menu items based on real restaurant data
         self.stdout.write('Creating menu items...')
-        menu_items = [            # Menu Paket
+        menu_items = [
+            # Menu Paket
             {
                 'category': created_categories['Menu Paket'],
                 'name': 'Paket Nila Bakar/Goreng + Nasi + Es Teh',
                 'description': 'Paket lengkap nila bakar atau goreng dengan nasi dan es teh',
-                'price': 29000,
-                'image': 'dummy/image-dummy.jpg'
+                'price': 29000
             },
             {
                 'category': created_categories['Menu Paket'],
                 'name': 'Paket Sate Kambing + Nasi + Es Teh',
                 'description': 'Paket sate kambing dengan nasi dan es teh',
-                'price': 20000,
-                'image': 'dummy/image-dummy.jpg'
+                'price': 20000
             },
 
             # Minuman
@@ -64,57 +63,49 @@ class Command(BaseCommand):
                 'category': created_categories['Minuman'],
                 'name': 'Jeruk Panas/Es',
                 'description': 'Minuman jeruk segar, tersedia panas atau es',
-                'price': 5000,
-                'image': 'dummy/image-dummy.jpg'
+                'price': 5000
             },
             {
                 'category': created_categories['Minuman'],
                 'name': 'Teh Panas/Es',
                 'description': 'Teh manis, tersedia panas atau es',
-                'price': 4000,
-                'image': 'dummy/image-dummy.jpg'
+                'price': 4000
             },
             {
                 'category': created_categories['Minuman'],
                 'name': 'Kopi Susu',
                 'description': 'Kopi dengan susu yang nikmat',
-                'price': 5000,
-                'image': 'dummy/image-dummy.jpg'
+                'price': 5000
             },
             {
                 'category': created_categories['Minuman'],
                 'name': 'Es Cokelat',
                 'description': 'Minuman cokelat dingin yang menyegarkan',
-                'price': 7000,
-                'image': 'dummy/image-dummy.jpg'
+                'price': 7000
             },
             {
                 'category': created_categories['Minuman'],
                 'name': 'Es Jeruk Teko Kecil',
                 'description': 'Es jeruk dalam teko kecil untuk berbagi',
-                'price': 12000,
-                'image': 'dummy/image-dummy.jpg'
+                'price': 12000
             },
             {
                 'category': created_categories['Minuman'],
                 'name': 'Es Jeruk Teko Besar',
                 'description': 'Es jeruk dalam teko besar untuk keluarga',
-                'price': 22000,
-                'image': 'dummy/image-dummy.jpg'
+                'price': 22000
             },
             {
                 'category': created_categories['Minuman'],
                 'name': 'Es Teh Teko Kecil',
                 'description': 'Es teh dalam teko kecil untuk berbagi',
-                'price': 10000,
-                'image': 'dummy/image-dummy.jpg'
+                'price': 10000
             },
             {
                 'category': created_categories['Minuman'],
                 'name': 'Es Teh Teko Besar',
                 'description': 'Es teh dalam teko besar untuk keluarga',
-                'price': 18000,
-                'image': 'dummy/image-dummy.jpg'
+                'price': 18000
             },
 
             # Menu Makanan
@@ -122,50 +113,43 @@ class Command(BaseCommand):
                 'category': created_categories['Menu Makanan'],
                 'name': '1 Kg Nila Bakar/Goreng',
                 'description': 'Ikan nila segar 1 kg, bisa dibakar atau digoreng',
-                'price': 65000,
-                'image': 'dummy/image-dummy.jpg'
+                'price': 65000
             },
             {
                 'category': created_categories['Menu Makanan'],
                 'name': '1 Kg Nila Bumbu Kari',
                 'description': 'Ikan nila 1 kg dengan bumbu kari yang khas',
-                'price': 70000,
-                'image': 'dummy/image-dummy.jpg'
+                'price': 70000
             },
             {
                 'category': created_categories['Menu Makanan'],
                 'name': 'Sup Nila Serani Khas Jepara',
                 'description': 'Sup ikan nila dengan resep khas Jepara',
-                'price': 27000,
-                'image': 'dummy/image-dummy.jpg'
+                'price': 27000
             },
             {
                 'category': created_categories['Menu Makanan'],
                 'name': 'Mie Mewah',
                 'description': 'Mie special dengan topping istimewa',
-                'price': 13000,
-                'image': 'dummy/image-dummy.jpg'
+                'price': 13000
             },
             {
                 'category': created_categories['Menu Makanan'],
                 'name': 'Ca Kangkung',
                 'description': 'Tumis kangkung dengan bumbu yang sedap',
-                'price': 8000,
-                'image': 'dummy/image-dummy.jpg'
+                'price': 8000
             },
             {
                 'category': created_categories['Menu Makanan'],
                 'name': 'Ca Tauge',
                 'description': 'Tumis tauge segar dengan bumbu yang pas',
-                'price': 8000,
-                'image': 'dummy/image-dummy.jpg'
+                'price': 8000
             },
             {
                 'category': created_categories['Menu Makanan'],
                 'name': 'Nasi Putih',
                 'description': 'Nasi putih hangat',
-                'price': 4000,
-                'image': 'dummy/image-dummy.jpg'
+                'price': 4000
             },
 
             # Cemilan
@@ -173,71 +157,62 @@ class Command(BaseCommand):
                 'category': created_categories['Cemilan'],
                 'name': 'Mendoan',
                 'description': 'Tempe mendoan khas dengan bumbu yang gurih',
-                'price': 6000,
-                'image': 'dummy/image-dummy.jpg'
+                'price': 6000
             },
             {
                 'category': created_categories['Cemilan'],
                 'name': 'Tahu Isi',
                 'description': 'Tahu dengan isian sayuran segar',
-                'price': 6000,
-                'image': 'dummy/image-dummy.jpg'
+                'price': 6000
             },
             {
                 'category': created_categories['Cemilan'],
                 'name': 'Udang Rambutan',
                 'description': 'Cemilan udang dengan bentuk unik seperti rambutan',
-                'price': 10000,
-                'image': 'dummy/image-dummy.jpg'
+                'price': 10000
             },
             {
                 'category': created_categories['Cemilan'],
                 'name': 'Pangsit Ayam',
                 'description': 'Pangsit isi ayam yang renyah',
-                'price': 10000,
-                'image': 'dummy/image-dummy.jpg'
+                'price': 10000
             },
             {
                 'category': created_categories['Cemilan'],
                 'name': 'Cireng Ayam Suwir',
                 'description': 'Cireng dengan isian ayam suwir',
-                'price': 10000,
-                'image': 'dummy/image-dummy.jpg'
+                'price': 10000
             },
             {
                 'category': created_categories['Cemilan'],
                 'name': 'Citul',
                 'description': 'Cemilan tradisional yang gurih',
-                'price': 10000,
-                'image': 'dummy/image-dummy.jpg'
+                'price': 10000
             },
             {
                 'category': created_categories['Cemilan'],
                 'name': 'Timus Ubi Ungu',
                 'description': 'Cemilan dari ubi ungu yang manis',
-                'price': 10000,
-                'image': 'dummy/image-dummy.jpg'
+                'price': 10000
             },
             {
                 'category': created_categories['Cemilan'],
                 'name': 'Bola-Bola Pisang Coklat',
                 'description': 'Bola pisang dengan topping coklat',
-                'price': 10000,
-                'image': 'dummy/image-dummy.jpg'
+                'price': 10000
             },
             {
                 'category': created_categories['Cemilan'],
                 'name': 'Pancake Durian',
                 'description': 'Pancake dengan rasa durian yang istimewa',
-                'price': 10000,
-                'image': 'dummy/image-dummy.jpg'
+                'price': 10000
             },
             {
                 'category': created_categories['Cemilan'],
                 'name': 'Kentang Goreng',
                 'description': 'Kentang goreng renyah dan lezat',
-                'price': 10000,
-                'image': 'dummy/image-dummy.jpg'            }
+                'price': 10000
+            }
         ]
 
         created_items = []
@@ -248,7 +223,6 @@ class Command(BaseCommand):
                     'category': item_data['category'],
                     'description': item_data['description'],
                     'price': item_data['price'],
-                    'image': item_data['image'],
                     'is_available': True
                 }
             )
