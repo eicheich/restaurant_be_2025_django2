@@ -2,6 +2,7 @@ from rest_framework import viewsets, status
 from rest_framework.response import Response
 from rest_framework.decorators import action
 from rest_framework.filters import SearchFilter, OrderingFilter
+from django_filters.rest_framework import DjangoFilterBackend
 from ..models import MenuCategory, MenuItem
 from ..serializers.menu_serializers import (
     MenuCategorySerializer,
@@ -29,7 +30,8 @@ class MenuItemViewSet(viewsets.ModelViewSet):
     """
     queryset = MenuItem.objects.all()
     serializer_class = MenuItemSerializer
-    filter_backends = [SearchFilter, OrderingFilter]
+    filter_backends = [DjangoFilterBackend, SearchFilter, OrderingFilter]
+    filterset_fields = ['category']  # Enable filtering by category
     search_fields = ['name', 'description', 'category__name']
     ordering_fields = ['name', 'price', 'created_at']
     ordering = ['name']
